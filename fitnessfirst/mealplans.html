@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meal Plans - Fitness First</title>
+  <link rel="stylesheet" href="mealplans.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">FitnessFirst<span class="dot-lk">.lk</span></div>
+    <ul class="nav-links">
+      <li><a href="fitness first.html">Home</a></li>
+      <li><a href="services.html">Classes</a></li>
+      <li><a href="trainers.html">Trainers</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="mealplans.html">Meal Plans</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+
+  <section class="meal-section">
+    <h2>Our Meal Plans</h2>
+    <p>Fuel your body with balanced nutrition. Choose a plan that fits your goals and lifestyle.</p>
+
+    <div class="meal-grid">
+      <div class="meal-card">
+        <img src="https://th.bing.com/th/id/OIP.P9w42V1Pg5RNpP8e8ryboAHaFb?r=0&rs=1&pid=ImgDetMain" alt="Weight Loss Meal">
+        <h3>Weight Loss</h3>
+        <p>Low-calorie, high-nutrient meals with plenty of greens, lean proteins, and smart carbs.</p>
+      </div>
+
+      <div class="meal-card">
+        <img src="https://ic-cdn.flipboard.com/eatingwell.com/89a40f38c5c57641196875c9e9a00d2a5c71ba4c/_xlarge.jpeg" alt="Muscle Gain Meal">
+        <h3>Muscle Gain</h3>
+        <p>Protein-rich meals with healthy fats and carbs to support muscle building and recovery.</p>
+      </div>
+
+      <div class="meal-card">
+        <img src="https://th.bing.com/th?id=OIF.HpYM%2bWR14%2f2f2Worirlf8A&r=0&rs=1&pid=ImgDetMain" alt="Balanced Meal">
+        <h3>Balanced</h3>
+        <p>Perfect for maintenance—moderate portions, clean eating, and a focus on whole foods.</p>
+      </div>
+
+      <div class="meal-card">
+        <img src="https://th.bing.com/th/id/R.b6b82f73cc7d8403b7552b3bcf943d5f?rik=1grP7FEQsJSV8g&pid=ImgRaw&r=0" alt="Vegan Meal">
+        <h3>Vegan</h3>
+        <p>Plant-based options with high protein sources like legumes, tofu, quinoa, and seeds.</p>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section class="bmi-section">
+    <h2>Calculate Your BMI</h2>
+    <form class="bmi-form" onsubmit="calculateBMI(event)">
+      <input type="number" id="weight" placeholder="Weight (kg)" required />
+      <input type="number" id="height" placeholder="Height (cm)" required />
+      <br>
+      <button type="submit">Calculate</button>
+    </form>
+    <div class="bmi-result" id="bmi-result"></div>
+  </section>
+
+ 
+  <footer class="footer">
+    <p>&copy; 2025 Fitness First. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+
+  <script>
+    function calculateBMI(event) {
+      event.preventDefault();
+      const weight = parseFloat(document.getElementById("weight").value);
+      const heightCm = parseFloat(document.getElementById("height").value);
+      const heightM = heightCm / 100;
+      const bmi = weight / (heightM * heightM);
+      let category = "";
+
+      if (bmi < 18.5) category = "Underweight";
+      else if (bmi < 24.9) category = "Normal weight";
+      else if (bmi < 29.9) category = "Overweight";
+      else category = "Obese";
+
+      document.getElementById("bmi-result").textContent =
+        `Your BMI is ${bmi.toFixed(2)} (${category})`;
+    }
+  </script>
+
+</body>
+</html>
