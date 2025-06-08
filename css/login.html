@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Fitness First</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    .navbar {
+      background: #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-box {
+      background-color: #fff;
+      padding: 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      margin: 3rem auto;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 1.5rem;
+      color: #ff5252;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 0.75rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-box button {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      width: 100%;
+      background-color: #ff5252;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background-color: #e53935;
+    }
+
+    .register-link {
+      margin-top: 1rem;
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 90%;
+      width: 300px;
+    }
+
+    .popup-card h2 {
+      margin: 0;
+    }
+
+    .popup-card button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: #ff5252;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .footer {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .footer .social-links {
+      margin-top: 1rem;
+    }
+
+    .footer .social-links a {
+      margin: 0 0.75rem;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer .social-links a:hover {
+      color: #ff5252;
+    }
+
+    .social-links a {
+      color: white;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ NAVBAR and LOGIN FORM SAME as before -->
+  <nav class="navbar">
+    <div class="logo">FitnessFirst.lk</div>
+    <ul class="nav-links">
+      <li><a href="fitness first.html">Home</a></li>
+      <li><a href="services.html">Classes</a></li>
+      <li><a href="trainers.html">Trainers</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="mealplans.html">Meal Plans</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="login-box">
+      <h2>Member Login</h2>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <a href="register.html" class="register-link">Don't have an account? Sign Up</a>
+    </div>
+  </header>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Fitness First. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('loginForm');
+
+    function showPopup(message, isSuccess) {
+      const popup = document.createElement('div');
+      popup.className = 'popup';
+
+      const card = document.createElement('div');
+      card.className = 'popup-card';
+
+      const heading = document.createElement('h2');
+      heading.textContent = message;
+      heading.style.color = isSuccess ? 'green' : 'red';
+
+      const btn = document.createElement('button');
+      btn.textContent = 'OK';
+
+      btn.onclick = () => {
+        document.body.removeChild(popup);
+        if (isSuccess) {
+          window.location.href = 'services.html';
+        }
+      };
+
+      card.appendChild(heading);
+      card.appendChild(btn);
+      popup.appendChild(card);
+      document.body.appendChild(popup);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch('login.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        showPopup(data.message, data.success);
+      })
+      .catch(() => {
+        showPopup('Something went wrong.', false);
+      });
+    });
+  </script>
+</body>
+</html>

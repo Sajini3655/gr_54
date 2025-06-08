@@ -1,0 +1,182 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: linear-gradient(to right, #242424, #323232, #3d3d3d);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.dot-lk {
+  color: #ff5252;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links li a:hover {
+  color: #ff5252;
+}
+
+.meal-section {
+  padding: 2rem 2rem;
+  background: linear-gradient(to right, #242424, #323232, #3d3d3d);
+  text-align: center;
+}
+
+.meal-section h2 {
+  padding: 0rem 0rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.5em;
+  color: #ff5252;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.meal-section h2::after {
+  content: "";
+  display: block;
+  margin: 0.6em auto 0 auto;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff5252 60%, #ffb347 100%);
+  border-radius: 2px;
+}
+
+.meal-section p {
+  color: #c3c1c1;
+}
+
+.meal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.meal-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.meal-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.meal-card h3 {
+  color: #ff5252;
+  margin-bottom: 0.5rem;
+}
+
+.meal-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.bmi-section {
+  padding: 3rem 2rem;
+  background: linear-gradient(to right, #1e1e1e, #2b2b2b, #3d3d3d);
+  text-align: center;
+  color: white;
+}
+
+.bmi-section h2 {
+  font-size: 2rem;
+  color: #ff5252;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.bmi-form input {
+  padding: 10px;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  width: 130px;
+  font-size: 1rem;
+}
+
+.bmi-form button {
+  padding: 10px 20px;
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.bmi-form button:hover {
+  background-color: #e53935;
+}
+
+.bmi-result {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #ffb347;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.footer .social-links {
+  margin-top: 1rem;
+}
+
+.footer .social-links a {
+  margin: 0 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+  color: #ff5252;
+}
